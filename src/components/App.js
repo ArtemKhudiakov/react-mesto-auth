@@ -8,6 +8,11 @@ import {api} from "../utils/Api";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
+import {Route, Switch} from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute";
+import Login from "./Login"
+import Register from "./Register"
+
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
@@ -20,6 +25,8 @@ function App() {
     avatar: ""
   })
   const [cards, setCards] = React.useState([]);
+  const [loggedIn, setLoggedIn] = React.useState(true);
+
 
   // Get cards and userinfo from server
   React.useEffect(() => {
@@ -110,15 +117,30 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header/>
-        <Main
-          cards={cards}
-          onEditProfile={handleEditProfileClick}
-          onAddPlace={handleAddPlaceClick}
-          onEditAvatar={handleEditAvatarClick}
-          onCardClick={handleCardClick}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-        />
+        <Switch>
+          <ProtectedRoute
+            exact path='/'
+            loggedIn={loggedIn}
+            component={Main}
+            cards={cards}
+            onEditProfile={handleEditProfileClick}
+            onAddPlace={handleAddPlaceClick}
+            onEditAvatar={handleEditAvatarClick}
+            onCardClick={handleCardClick}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
+          />
+          {/*<Route path='/sign-in'>*/}
+          {/*  <Register*/}
+
+          {/*  />*/}
+          {/*</Route>*/}
+          {/*<Route path='/sign-up'>*/}
+          {/*  <Login*/}
+
+          {/*  />*/}
+          {/*</Route>*/}
+        </Switch>
         <Footer/>
         {/* <!-- Edit profile popup --> */}
         <EditProfilePopup
