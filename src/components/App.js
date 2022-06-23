@@ -130,12 +130,12 @@ function App() {
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
           />
-          {/*<Route path='/sign-in'>*/}
-          {/*  <Register*/}
+          <Route path='/sign-up'>
+            <Register
 
-          {/*  />*/}
-          {/*</Route>*/}
-          {/*<Route path='/sign-up'>*/}
+            />
+          </Route>
+          {/*<Route path='/sign-in'>*/}
           {/*  <Login*/}
 
           {/*  />*/}
