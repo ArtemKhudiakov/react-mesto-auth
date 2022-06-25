@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 
-function Register({handleReg}) {
+function Register({onRegister}) {
 
   const [data, setData] = useState({
     email: '',
@@ -19,7 +19,7 @@ function Register({handleReg}) {
   function handleSubmit(e) {
     e.preventDefault()
     let {email, password} = data;
-    handleReg({email, password});
+    onRegister({email, password});
 
   }
 

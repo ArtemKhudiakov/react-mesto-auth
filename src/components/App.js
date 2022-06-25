@@ -205,10 +205,10 @@ function App() {
             onCardDelete={handleCardDelete}
           />
           <Route path='/sign-up'>
-            <Register handleReg={handleReg}/>
+            <Register onRegister={handleReg}/>
           </Route>
           <Route path='/sign-in'>
-            <Login handleLogin={handleLogin}/>
+            <Login onLogin={handleLogin}/>
           </Route>
         </Switch>
         <Footer/>
