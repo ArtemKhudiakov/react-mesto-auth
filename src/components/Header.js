@@ -2,7 +2,7 @@ import logo from '../images/Vector-logo.svg';
 import {Link, Route, Switch} from "react-router-dom";
 import React from "react";
 
-export default function Header({loggedIn, email, onSignOut}) {
+export default function Header({email, onSignOut}) {
 
   return (
     <header className="header">
